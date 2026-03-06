@@ -1,0 +1,64 @@
+a = numero de personas
+escribir "Ingrese numero de personas" 
+ingresa(a)
+nombres = tamaño a []
+cumpleaños = tamaño a []
+
+ciclo for (variable i de control, desde i=1 hasta a)
+	escribir "Ingresa nombre"
+	ingresa nombre[i]
+	escribir "Ingresa cumpleaños"
+	ingresa cumpleaños[i]
+fin ciclo for
+
+\\Verificamos si 2 personas cumplen el mismo día
+tamaño_personas_mismo_cumpleaños = 0
+personas_mismo_cumpleaños = tamaño tamaño_personas_mismo_cumpleaños []
+ciclo for1 (variable i de control, desde i=1 hasta a)
+	ciclo for2 (variable j de control, desde j=i+1 hasta a)
+		ciclo si (cumpleaños[i] == cumpleaños[j])
+			tamaño_personas_mismo_cumpleaños++
+			personas_mismo_cumpleaños[i]=persona[i]
+			personas_mismo_cumpleaños[i+1]=persona[j] 
+		fin ciclo si
+	fin ciclo for2
+fin ciclo for1
+
+\\Verificamos para salir del programa
+ciclo si(tamaño_personas_mismo_cumpleaños>0)
+	escribir el nombre de las personas
+	terminar el programa
+fin ciclo si
+
+\\Si no hay nadie, ordenamos los datos primero en orden de mes y año
+orden_cumpelañeros = tamaño a []
+
+ciclo for1 (variable i de control, desde i=1 hasta a)
+	ciclo for2 (variable j de control, desde j=i+1 hasta a)
+		ciclo si (cumpleaños[i] < cumpleaños[j])
+			orden_cumpleañeros[i]=persona[i]
+			orden_cumpleañeros[i+1]=persona[j] 
+		fin ciclo si
+		ciclo si (cumpleaños[i] > cumpleaños[j])
+			orden_cumpleañeros[i]=persona[j]
+			orden_cumpleañeros[i+1]=persona[i] 
+		fin ciclo si
+	fin ciclo for2
+fin ciclo for1
+
+\\Ahora vemos quienes cumplen más cerca años
+diferencias = tamaño a-1 []
+menor_diferencia = tamaño 2 []
+ciclo for (variable i de control, desde i=1 hasta a-1)
+		diferencias[i] = cumpleaños[i]-cumpleaños[i+1]
+		ciclo si(i=2 y diferencias[i] > diferencias[i-1])
+			menor_diferencia[1] = persona[i]
+			menor_diferencia[2] = persona[i+1]
+		fin ciclo si
+		ciclo si(i=2 y diferencias[i] < diferencias[i-1])
+			menor_diferencia[1] = persona[i-1]
+			menor_diferencia[2] = persona[i]
+		fin ciclo si
+fin ciclo for
+
+fin programa
